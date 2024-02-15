@@ -1,0 +1,28 @@
+def calculate_triangle_properties(a, b, c):
+    if not a.isdigit() and not b.isdigit() and not c.isdigit():
+        return "Ошибка: длины сторон треугольника должны быть положительными числами!"
+    
+    a = float(a)
+    b = float(b)
+    c = float(c)
+    
+    if a + b <= c or a + c <= b or b + c <= a:
+        return "Ошибка: такого треугольника не существует!"
+    
+    perimeter = a + b + c
+    p = perimeter / 2
+    area = (p * (p - a) * (p - b) * (p - c)) ** 0.5
+    
+    return f"Периметр треугольника: {perimeter}\nПлощадь треугольника: {area}"
+
+while True:
+    a = input("Введите длину стороны a: ")
+    b = input("Введите длину стороны b: ")
+    c = input("Введите длину стороны c: ")
+    
+    res = calculate_triangle_properties(a, b, c)
+    if not "Ошибка:" in res:
+        print(calculate_triangle_properties(a, b, c))
+        break
+    else:
+        print(calculate_triangle_properties(a, b, c), "\n")
